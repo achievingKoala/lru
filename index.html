@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <title>LRU</title>
+    <script src="https://cdn.staticfile.org/vue/2.7.0/vue.min.js"></script>
+</head>
+<body>
+<header>
+
+</header>
+<div id="app">
+    <input v-model="addItem" placeholder="添加元素">
+    <button @click="addArray">add</button>
+    <button @click="refreshArray">refresh</button>
+   
+    <ol>
+        <li v-for="site in array1">
+            {{ site }}
+          </li>
+    </ol>
+    <hr>
+    key:<input v-model="mk" placeholder="添加key">
+    value:<input v-model="mapValue" placeholder="添加value">
+    <button @click="addMapNode">添加</button>
+    容量：
+    <input v-model="capacity" placeholder="容量">
+<!-- 查找value:<input value="get" -->
+<ol>
+    <li v-for="node in myMap">
+        {{ node }}
+    </li>
+</ol>
+<hr>
+查找：<input v-model="queryKey" placeholder="输入key"> <button @click="getFromMap">find</button>
+结果：{{queryRes}}
+</div>
+<footer>
+
+</footer>
+<script src="main.js"></script>
+
+</body>
+</html>
