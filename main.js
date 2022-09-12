@@ -1,26 +1,3 @@
-console.log(10)
-
-var person = {
-    firstName: "John",
-    lastName : "Doe",
-    id : 5566,
-    fullName : function() 
-	{
-       return this.firstName + " " + this.lastName;
-    }
-};
-
-// var person = {
-//     firstName: "John",
-//     lastName : "Doe",
-//     id : 5566,
-//     fullName : function() 
-// 	{
-//        return this.firstName + " " + this.lastName;
-//     }
-// };
-
-console.log(person.fullName())
 
 var myMap = new Object()
 myMap["age2"] =  9999
@@ -38,7 +15,11 @@ new Vue({
       mk:"88",
       mapValue:"99dfds",
       queryKey:null,
-      queryRes: ""
+      queryRes: "",
+      word:"sdfeefsaslkladsfadfvssfeefef",
+      leftIndex:3,
+      rightIndex:4,
+      wordSet:new Set()
     },
     created: function(){
         // this.myMap["age"] =  333
@@ -54,6 +35,24 @@ new Vue({
         }
     },
     methods:{
+        startSlide: function(){
+            if (this.rightIndex < this.word.length && !this.wordSet.has(this.word[this.rightIndex])) {
+                this.wordSet.add(this.word[this.rightIndex])
+                this.rightIndex++;
+                return
+            } 
+            this.wordSet.delete(this.word[this.leftIndex])
+            this.leftIndex++
+        },
+        getColor: function(index){
+            var color = 'write'
+            if (index >= this.leftIndex && index<=this.rightIndex) {
+                console.log('getColor',index)
+                console.log('getColorL',this.leftIndex)
+                color = 'green'
+            }
+            return color
+        },
         getFromMap: function(){
             if (this.myMap.has(this.queryKey)) {
                 this.queryRes = this.myMap.get(this.queryKey)

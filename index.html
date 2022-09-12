@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>LRU</title>
     <script src="https://cdn.staticfile.org/vue/2.7.0/vue.min.js"></script>
+    <style>
+        .tr_class {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -13,7 +20,6 @@ auto
     <input v-model="addItem" placeholder="添加元素">
     <button @click="addArray">add</button>
     <button @click="refreshArray">refresh</button>
-   
     <ol>
         <li v-for="site in array1">
             {{ site }}
@@ -34,6 +40,22 @@ auto
 <hr>
 查找：<input v-model="queryKey" placeholder="输入key"> <button @click="getFromMap">find</button>
 结果：{{queryRes}}
+<hr>
+输入单词：<input v-model="word"> <input v-model="leftIndex">
+<input v-model="rightIndex">
+<button @click="startSlide">start</button> <span v-for="c in wordSet">{{c}}</span>
+<table border="1">
+    <tr>
+        <td v-for="x in word.length" class="tr_class"><p v-if="x-1===leftIndex||x-1===rightIndex">↓</p></td>
+    </tr>
+    <tr>
+        <td v-for="x in word.length" class="tr_class">{{x-1}}</td>
+    </tr>
+    <tr>
+        <td v-for="(c,i) in word" class="tr_class" v-bind:style="{background:getColor(i)}"> {{c}}</td>
+    </tr>
+  </table>
+
 </div>
 <footer>
 
